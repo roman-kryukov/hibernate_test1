@@ -31,13 +31,13 @@ public class App extends Application
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("view/main.fxml"));
         // Назначание контроллера через код, чтобы можно было внедрить 
-        // sessionFactory и personDao (DAO - data access object, объект, который работает исключительно с базой данных, не затрагивая бизнес-логику).
-        // Я сознательно не делаю sessionFactory и personDao статичными, чтобы к ним нельзя было обращаться
+        // carDao и personDao (DAO - data access object, объект, который работает исключительно с базой данных, не затрагивая бизнес-логику).
+        // Я сознательно не делаю carDao и personDao статичными, чтобы к ним нельзя было обращаться
         // через Main.sessionFactory и Main.personDao, потому что я считаю этот подход идиотским, так как
-        // контроллер будет зависеть от Main класса. При внедрении sessionFactory контроллер ни от
+        // контроллер будет зависеть от Main класса. При внедрении carDao контроллер ни от
         // кого не зависит.
         // Либо можно создать статический класс HibernateUtils (допуспим) 
-        // и там создать статические поля sessionFactory и personDao, обращаться к ним
+        // и там создать статические поля carDao и personDao, обращаться к ним
         // в контроллере, но я бы так не делал.
         loader.setController(new MainController(personDao, carDao));
         Parent parent = loader.load();
