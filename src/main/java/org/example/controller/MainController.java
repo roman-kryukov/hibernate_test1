@@ -73,7 +73,8 @@ public class MainController implements Initializable {
             // чтобы проинициализировать этот список, ведь используется ленивая загрузка.
             // Если попробовать получить список машин здесь, не создавая новую сессию и транзакцию
             // таким образом: person.getCars(), то выбросится исключение о том, что нет сессии
-            // для инициализации списка машин
+            // для инициализации списка машин. Поэтому внутри метода carDao.getCarsByPerson(person)
+            // создается новая сессия и транзакция
             for (Car car : carDao.getCarsByPerson(person)) {
                 Label label = new Label(car.getName());
                 label.setStyle("-fx-font-size: 20;");
