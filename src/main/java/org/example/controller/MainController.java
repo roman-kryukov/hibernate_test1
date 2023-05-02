@@ -61,7 +61,7 @@ public class MainController implements Initializable {
             vBox.setPadding(new Insets(20));
 
             Session session = sessionFactory.getCurrentSession();
-            session.beginTransaction(); // Если у поля fetch = FetchType.LAZY,
+            session.beginTransaction(); // Если у связного один ко многим поля fetch = FetchType.LAZY,
             // тогда нужно открыть тразнкцию для инициализации списка машин
 
             // Чтобы список инициализировать сразу, не открывая транзанцию при получении списка,
