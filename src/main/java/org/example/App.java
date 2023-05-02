@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.controller.MainController;
+import org.example.dao.CarDao;
 import org.example.dao.PersonDao;
 import org.example.model.Car;
 import org.example.model.Person;
@@ -21,6 +22,7 @@ public class App extends Application
     private SessionFactory sessionFactory = configuration.buildSessionFactory();
     
     private PersonDao personDao = new PersonDao(sessionFactory);
+    private CarDao carDao = new CarDao(sessionFactory);
 
     public static void main(String[] args) {
         launch(args);
@@ -37,7 +39,7 @@ public class App extends Application
         // Либо можно создать статический класс HibernateUtils (допуспим) 
         // и там создать статические поля sessionFactory и personDao, обращаться к ним
         // в контроллере, но я бы так не делал.
-        loader.setController(new MainController(sessionFactory, personDao));
+        loader.setController(new MainController(personDao, carDao));
         Parent parent = loader.load();
         primaryStage.setScene(new Scene(parent));
         primaryStage.show();

@@ -12,12 +12,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.example.dao.CarDao;
 import org.example.dao.PersonDao;
 import org.example.model.Car;
 import org.example.model.Person;
 import org.hibernate.Hibernate;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,13 +35,12 @@ public class MainController implements Initializable {
     @FXML
     private TableColumn<Person, String> lastName;
 
-    private final SessionFactory sessionFactory;
     private final PersonDao personDao;
+    private final CarDao carDao;
 
-    public MainController(SessionFactory sessionFactory, PersonDao personDao) {
-        this.sessionFactory = sessionFactory;
-
+    public MainController(PersonDao personDao, CarDao carDao) {
         this.personDao = personDao;
+        this.carDao = carDao;
     }
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -61,16 +59,7 @@ public class MainController implements Initializable {
             vBox.setSpacing(10);
             vBox.setPadding(new Insets(20));
 
-            Session session = sessionFactory.getCurrentSession();
-            session.beginTransaction(); // Если у связного один ко многим поля fetch = FetchType.LAZY,
-            // тогда нужно открыть тразнкцию для инициализации списка машин
-
-            // Чтобы список машин инициализировать сразу, не открывая транзанцию, при получении людей,
-            // можно использовать fetch = FetchType.EAGER, но не рекомендуется
-
-            // session.merge(Object object) - привязка объекта Person к сессии, чтобы
-            // он стал persistent, иначе список машин невозможно будет инициализировать
-            Person person = (Person) session.merge(table.getSelectionModel().getSelectedItem());
+            Person person = table.getSelectionModel().getSelectedItem();
 
             vBox.getChildren().add(new Label(
                     new StringJoiner(" ")
@@ -80,15 +69,11 @@ public class MainController implements Initializable {
                             .toString()
             ));
 
-
-            // Здесь при вызове метода .getCars() список машин будет проинициализирован
-            for (Car car : person.getCars()) {
+            for (Car car : carDao.getCarsByPerson(person)) {
                 Label label = new Label(car.getName());
                 label.setStyle("-fx-font-size: 20;");
                 vBox.getChildren().add(label);
             }
-
-            session.getTransaction().commit();
 
             Stage stage = new Stage();
             stage.setScene(new Scene(vBox));

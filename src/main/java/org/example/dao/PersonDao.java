@@ -6,24 +6,10 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class PersonDao {
-
-    private final SessionFactory sessionFactory;
+public class PersonDao extends EntityDao<Person> {
 
     public PersonDao(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+        super(Person.class, sessionFactory);
     }
 
-    public List<Person> findAll() {
-        Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction(); // Обязательно открыть транзакцию, иначе будет исключение
-
-        // Здесь используется язык HQL - The Hibernate Query Language
-        List<Person> people = session.createQuery("select p from Person p", Person.class)
-                .getResultList();
-
-        session.getTransaction().commit(); // и закрыть
-
-        return people;
-    }
 }

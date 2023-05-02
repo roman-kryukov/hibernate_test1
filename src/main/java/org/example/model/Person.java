@@ -18,7 +18,7 @@ public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     // mappedBy = "person": Значение "person" - это название ПОЛЯ в КЛАССЕ Car, не в базе данных.
     // fetch = FetchType.LAZY писать необязательно, потому что оно задано по умолчанию,
