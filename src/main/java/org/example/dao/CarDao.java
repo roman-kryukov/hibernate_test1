@@ -22,6 +22,7 @@ public class CarDao extends EntityDao<Car> {
     public List<Car> getCarsByPerson(Person person) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
+        // Привязка person к сессии (помощение в persistence context)
         person = (Person) session.merge(person);
 
         // Обязательно использовать метод для инициализации
