@@ -39,10 +39,10 @@ public class MainController implements Initializable {
     private final SessionFactory sessionFactory;
     private final PersonDao personDao;
 
-    public MainController(SessionFactory sessionFactory) {
+    public MainController(SessionFactory sessionFactory, PersonDao personDao) {
         this.sessionFactory = sessionFactory;
 
-        this.personDao = new PersonDao(sessionFactory);
+        this.personDao = personDao;
     }
 
     public void initialize(URL location, ResourceBundle resources) {
