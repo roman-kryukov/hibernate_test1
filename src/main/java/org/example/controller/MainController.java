@@ -64,10 +64,10 @@ public class MainController implements Initializable {
             session.beginTransaction(); // Если у поля fetch = FetchType.LAZY,
             // тогда нужно открыть тразнкцию для инициализации списка машин
 
-            // Чтобы сразу инициализировать сразу, не открывая транзанцию при получении списка,
+            // Чтобы список инициализировать сразу, не открывая транзанцию при получении списка,
             // можно использовать fetch = FetchType.EAGER, но не рекомендуется
 
-            // session.merge(Object object) - привязка объекта Person к сессии, чтобы hibernate
+            // session.merge(Object object) - привязка объекта Person к сессии, чтобы
             // он стал persistent
             Person person = (Person) session.merge(table.getSelectionModel().getSelectedItem());
 
