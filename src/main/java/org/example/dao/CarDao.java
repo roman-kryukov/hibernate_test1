@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
+// Классы наследники нужны для реализации специфичных функций для данных сущностей
 public class CarDao extends EntityDao<Car> {
 
     public CarDao(SessionFactory sessionFactory) {
