@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
+// Классы наследники нужны для реализации специфичных функций для данных сущностей
 public class PersonDao extends EntityDao<Person> {
 
     public PersonDao(SessionFactory sessionFactory) {
