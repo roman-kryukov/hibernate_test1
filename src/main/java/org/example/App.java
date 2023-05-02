@@ -22,6 +22,8 @@ public class App extends Application
             .addAnnotatedClass(Car.class); // Добавление сущностей
 
     SessionFactory sessionFactory = configuration.buildSessionFactory();
+    
+    PersonDao personDao = new PersonDao(sessionFactory);
 
     public static void main(String[] args) {
         launch(args);
@@ -34,7 +36,7 @@ public class App extends Application
         // через Main.sessionFactory, потому что я считаю этот подход идиотским, так как
         // контроллер будет зависеть от Main класса. При внедрении sessionFactory контроллер ни от
         // кого не зависит.
-        loader.setController(new MainController(sessionFactory));
+        loader.setController(new MainController(sessionFactory, personDao));
         Parent parent = loader.load();
         primaryStage.setScene(new Scene(parent));
         primaryStage.show();
