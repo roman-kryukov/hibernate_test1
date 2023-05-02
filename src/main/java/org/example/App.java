@@ -14,13 +14,13 @@ import org.hibernate.cfg.Configuration;
 
 public class App extends Application
 {
-    Configuration configuration = new Configuration()
+    private Configuration configuration = new Configuration()
             .addAnnotatedClass(Person.class)
             .addAnnotatedClass(Car.class); // Добавление сущностей
 
-    SessionFactory sessionFactory = configuration.buildSessionFactory();
+    private SessionFactory sessionFactory = configuration.buildSessionFactory();
     
-    PersonDao personDao = new PersonDao(sessionFactory);
+    private PersonDao personDao = new PersonDao(sessionFactory);
 
     public static void main(String[] args) {
         launch(args);
