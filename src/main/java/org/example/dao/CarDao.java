@@ -17,7 +17,7 @@ public class CarDao extends EntityDao<Car> {
     }
 
     // Получать машины человека через новую транзакцию нужно потому
-    // что в поле cars используется ленивая загрузка (fetch = FetchType.LAZY).
+    // что в поле cars класса Person используется ленивая загрузка (fetch = FetchType.LAZY).
     // Без открытия новой транзакции и привязки к новой сессии hibernate не сможет
     // проинициализировать cars.
     public List<Car> getCarsByPerson(Person person) {
