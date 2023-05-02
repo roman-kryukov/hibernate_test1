@@ -30,8 +30,8 @@ public class App extends Application
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("view/main.fxml"));
         // Назначание контроллера через код, чтобы можно было внедрить 
         // sessionFactory и personDao (DAO - data access object, объект, который работает исключительно с базой данных, не затрагивая бизнес-логику).
-        // Я сознательно не делаю sessionFactory и personDao статичными, чтобы к нему нельзя было обращаться
-        // через Main.sessionFactory, потому что я считаю этот подход идиотским, так как
+        // Я сознательно не делаю sessionFactory и personDao статичными, чтобы к ним нельзя было обращаться
+        // через Main.sessionFactory и Main.personDao, потому что я считаю этот подход идиотским, так как
         // контроллер будет зависеть от Main класса. При внедрении sessionFactory контроллер ни от
         // кого не зависит.
         loader.setController(new MainController(sessionFactory, personDao));
