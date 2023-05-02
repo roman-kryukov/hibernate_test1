@@ -32,7 +32,7 @@ public class App extends Application
         // Назначание контроллера через код, чтобы можно было внедрить sessionFactory
         // Я сознательно не делаю sessionFactory статичным, чтобы к нему нельзя было обращаться
         // через Main.sessionFactory, потому что я считаю этот подход идиотским, так как
-        // контроллер будет зависить от Main класса. При внедрении sessionFactory контроллер ни от
+        // контроллер будет зависеть от Main класса. При внедрении sessionFactory контроллер ни от
         // кого не зависит.
         loader.setController(new MainController(sessionFactory));
         Parent parent = loader.load();
