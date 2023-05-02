@@ -81,6 +81,7 @@ public class MainController implements Initializable {
             ));
 
 
+            // Здесь при вызове метода .getCars() список машин будет проинициализирован
             for (Car car : person.getCars()) {
                 Label label = new Label(car.getName());
                 label.setStyle("-fx-font-size: 20;");
