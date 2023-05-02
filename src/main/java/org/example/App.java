@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.controller.MainController;
+import org.example.dao.PersonDao;
 import org.example.model.Car;
 import org.example.model.Person;
 import org.hibernate.SessionFactory;
