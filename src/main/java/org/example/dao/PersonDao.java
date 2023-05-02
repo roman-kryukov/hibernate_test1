@@ -18,6 +18,7 @@ public class PersonDao {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction(); // Обязательно открыть транзакцию, иначе будет исключение
 
+        // Здесь используется язык HQL - The Hibernate Query Language
         List<Person> people = session.createQuery("select p from Person p", Person.class)
                 .getResultList();
 
