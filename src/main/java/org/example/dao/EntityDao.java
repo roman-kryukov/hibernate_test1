@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
+// Обобщённый класс, от которого все DAO будут наследоваться.
+// В нём будут реализованы стандатрные методы: получение, редактирование, удаление, создание
 public class EntityDao<T> {
 
     private final Class<T> TYPE;
@@ -26,4 +28,7 @@ public class EntityDao<T> {
 
         return entities;
     }
+    
+    // Получить по id
+    // Удалить ...
 }
