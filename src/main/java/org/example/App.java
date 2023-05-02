@@ -12,10 +12,6 @@ import org.example.model.Person;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-/**
- * Hello world!
- *
- */
 public class App extends Application
 {
     Configuration configuration = new Configuration()
