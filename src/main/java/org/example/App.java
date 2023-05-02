@@ -35,7 +35,8 @@ public class App extends Application
         // контроллер будет зависеть от Main класса. При внедрении sessionFactory контроллер ни от
         // кого не зависит.
         // Либо можно создать статический класс HibernateUtils (допуспим) 
-        // и там создать статические поля, но я бы так не делал.
+        // и там создать статические поля sessionFactory и personDao, обращаться к ним
+        // в контроллере, но я бы так не делал.
         loader.setController(new MainController(sessionFactory, personDao));
         Parent parent = loader.load();
         primaryStage.setScene(new Scene(parent));
