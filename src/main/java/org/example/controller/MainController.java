@@ -69,6 +69,8 @@ public class MainController implements Initializable {
                             .toString()
             ));
 
+            // Получение списка машин человека через CarDao нужно для того
+            // чтобы проинициализировать этот список, ведь используется ленивая загрузка
             for (Car car : carDao.getCarsByPerson(person)) {
                 Label label = new Label(car.getName());
                 label.setStyle("-fx-font-size: 20;");
