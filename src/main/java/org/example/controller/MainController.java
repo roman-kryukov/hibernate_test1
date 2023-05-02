@@ -49,6 +49,7 @@ public class MainController implements Initializable {
         firstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
+        // Назначение элементов через DAO
         table.setItems(FXCollections.observableArrayList(personDao.findAll()));
     }
 
