@@ -68,7 +68,7 @@ public class MainController implements Initializable {
             // можно использовать fetch = FetchType.EAGER, но не рекомендуется
 
             // session.merge(Object object) - привязка объекта Person к сессии, чтобы
-            // он стал persistent
+            // он стал persistent, иначе список машин невозможно будет инициализировать
             Person person = (Person) session.merge(table.getSelectionModel().getSelectedItem());
 
             vBox.getChildren().add(new Label(
