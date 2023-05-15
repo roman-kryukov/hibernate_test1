@@ -37,8 +37,7 @@ public class App extends Application
         // контроллер будет зависеть от Main класса, плюс со статическими полями нужно быть осторожным. 
         // При внедрении carDao контроллер ни от кого не зависит.
         // Либо можно создать статический класс HibernateUtils (допуспим) 
-        // и там создать статические поля carDao и personDao, обращаться к ним
-        // в контроллере, но я бы так не делал.
+        // и там создать статические поля carDao и personDao
         loader.setController(new MainController(personDao, carDao));
         Parent parent = loader.load();
         primaryStage.setScene(new Scene(parent));
